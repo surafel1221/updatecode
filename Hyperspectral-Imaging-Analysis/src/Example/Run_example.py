@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider
 from tkinter import messagebox, simpledialog
 from spectral import open_image, imshow
-
+import tkinter as tk
 
 
 def load_dispaly_Cube(image_path):
@@ -42,20 +42,19 @@ def load_dispaly_Cube(image_path):
     
     plt.show()
 
-def Display_RGB(image_path,root):
-    band_str = simpledialog.askstring("Input Bands", "Enter the R, G, B bands separated by commas (e.g., 29,19,9):",
-                                      parent=root)  
-    if band_str:
-        try:
-            Rband, Gband, Bband = map(int, band_str.split(','))
-            
-            img = open_image(image_path).load()
-            imshow(img, (Rband, Gband, Bband))
-        except ValueError:
-            messagebox.showerror("Error", "Please enter three valid integers separated by commas.")
-        except Exception as e:
-            messagebox.showerror("Error", f"An error occurred: {e}")
-    else:
-        messagebox.showinfo("Cancelled", "Operation cancelled by user.")
+def Display_RGB():
+    image_path = "C:\\Users\\suraf\\New folder (2)\\Hyperspectral-Imaging-Analysis\\src\\Example\\92AV3C (2).lan"
+    Rband = 29
+    Gband = 19
+    Bband = 9
+
+    try:
+        img = open_image(image_path).load()
+        imshow(img, (Rband, Gband, Bband))
+    except Exception as e:
+        root = tk.Tk()  
+        root.withdraw()  
+        messagebox.showerror("Error", f"An error occurred: {e}", parent=root)
+        root.destroy() 
 
     
