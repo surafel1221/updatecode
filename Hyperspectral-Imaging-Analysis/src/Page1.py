@@ -3,7 +3,7 @@ from tkinter import ttk
 import sv_ttk
 from StartPoint import MoveLeftOne, MoveLeftFive, MoveRightOne, MoveRightFive
 from Scanning import start_scan
-
+from Example.Run_example  import load_dispaly_Cube, Display_RGB 
 class MovementControl(ttk.LabelFrame):
     def __init__(self, parent, title, move_one, move_five):
         super().__init__(parent, text=title, padding=15)
@@ -29,8 +29,15 @@ class App(ttk.Frame):
         MovementControl(self, "Move Right", MoveRightOne, MoveRightFive).grid(row=0, column=1, sticky="nsew", padx=(0, 10))
 
         ttk.Button(self, text="Start Scanning", command=self.start_scanning).grid(row=1, column=0, columnspan=2, sticky="ew", padx=20, pady=10)
+        ttk.Button(self, text="Display Cube", command=lambda: load_dispaly_Cube("C:\\Users\\suraf\\New folder (2)\\Hyperspectral-Imaging-Analysis\\src\\Example\\92AV3C (2).lan")).grid(row=2, column=1, columnspan=3, sticky="ew", padx=20, pady=10)
+        ttk.Button(self, text="Display RGB ", command=lambda: Display_RGB()).grid(row=3, column=2, columnspan=4, sticky="ew", padx=20, pady=10)
 
+
+    def start_scanning():
+        print("starting scan....")
     
+    def Display_Cube():
+        print("displaying cube...")
 
 def main():
     root = tk.Tk()
