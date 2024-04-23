@@ -18,14 +18,13 @@ root.geometry("700x700")
 
 sv_ttk.set_theme("dark")
 
-main_frame = ttk.Frame(root, style='TFrame')
+main_frame = ttk.Frame(root)
 main_frame.pack(expand=True, fill=tk.BOTH)
-main_frame.columnconfigure(0, weight=1)
 
-main_frame.rowconfigure(1, weight=1)
-main_frame.rowconfigure(2, weight=1)
-main_frame.rowconfigure(3, weight=1)
-main_frame.rowconfigure(4, weight=1)
+# Configuration of grid
+for i in range(5):  # Configure multiple rows
+    main_frame.rowconfigure(i, weight=1)  # Each row gets equal weight
+main_frame.columnconfigure(0, weight=1)  # Single column with appropriate weight
 
 welcome_label = ttk.Label(main_frame, text="Welcome To Our Project!", font=("Arial", 16, "bold"), anchor='center')
 welcome_label.grid(row=1, column=0, sticky=tk.NSEW)
