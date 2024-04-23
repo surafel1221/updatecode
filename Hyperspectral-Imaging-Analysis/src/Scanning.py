@@ -52,7 +52,7 @@ def move_rail_and_capture_images(num_images, output_dir, rail_speed_mm_s, rail_d
         logger.error(f"An unexpected error occurred: {e}")
 
 def main():
-    num_images = 10  
+    num_images = 200  
     output_dir = "images" 
     rail_speed_mm_s = 5  # Rail speed in mm/s
     rail_distance_mm = 100  # Total movement in mm
